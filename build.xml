@@ -14,7 +14,7 @@
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
     <property name="test"  location="test"/>
-    <property name="junit" location="lib/junit.jar"/>
+  
     <property name="hamcrest" location="lib/hamcrest-core.jar"/>
 
               	<path id="classpath.test">

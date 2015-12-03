@@ -28,6 +28,19 @@
     <target name="clean">
         <delete dir="bin"/>
     </target>
+<target name="Test">
+	
+	    <junit fork="yes" haltonfailure="true">
+	      <classpath refid="classpath.test" />
+	      <batchtest fork="yes" todir="tres">
+	        <formatter type="brief" usefile="false"/>
+	        <fileset dir="${test}">
+	          <include name="**/*Test*.java"/>
+	        </fileset>
+	      </batchtest>
+	    </junit>
+	 
+</target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>

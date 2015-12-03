@@ -47,7 +47,7 @@
 	    
 	     
 	     
-	        <formatter type="brief" usefile="false"/>
+	        
 	        <fileset dir="${test}">
 	          <include name="**/*Test*.java"/>
 	        </fileset>

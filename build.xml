@@ -44,7 +44,7 @@
     </target>
 <target name="test">
 	
-	    <junit fork="yes" haltonfailure="true">
+	    
 	      <classpath refid="classpath.test" />
 	      <batchtest fork="yes" todir="tres">
 	        <formatter type="brief" usefile="false"/>
@@ -52,7 +52,7 @@
 	          <include name="**/*Test*.java"/>
 	        </fileset>
 	      </batchtest>
-	    </junit>
+	   
 	 
 </target>
     <target depends="clean" name="cleanall"/>

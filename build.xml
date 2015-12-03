@@ -28,7 +28,7 @@
     <target name="clean">
         <delete dir="bin"/>
     </target>
-<target name="Test">
+<target name="test">
 	
 	    <junit fork="yes" haltonfailure="true">
 	      <classpath refid="classpath.test" />

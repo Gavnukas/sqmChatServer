@@ -35,7 +35,9 @@ public class Server {
 				list.add(c);
 		}
 	}
-	
+	public ServerSocket getSocket(){
+		return server;
+	}
 	public ArrayList<String> getUserList() {
 		ArrayList<String> userList = new ArrayList<String>();
 		for( Connection clientThread: list){

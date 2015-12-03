@@ -38,7 +38,7 @@ public class Connection implements Runnable {
 			System.exit(-1);
 		}
 		running = true;
-		this.sendOverConnection("OK Welcome to the chat server, there are currelty " + serverReference.getNumberOfUsers() + " user(s) online");
+		this.sendOverConnection("OK Welcome to the chat server, there are currently " + serverReference.getNumberOfUsers() + " user(s) online");
 		while(running) {
 			try {
 				line = in.readLine();
@@ -69,6 +69,11 @@ public class Connection implements Runnable {
 					break;
 					
 				case "HAIL":
+					if(message.length() < 5){
+						sendOverConnection("BAD command not recognised");
+						break;
+
+					}
 					hail(message.substring(5));
 					break;
 				
@@ -110,7 +115,7 @@ public class Connection implements Runnable {
 				for(String s: userList) {
 					userListString += s + ", ";
 				}
-				sendOverConnection("OK " + userListString);
+				sendOverConnection("LIST " + userListString);
 				break;
 			
 			case STATE_UNREGISTERED:

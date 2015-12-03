@@ -6,16 +6,21 @@
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="Simple Chat Server">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../Downloads/eclipse/"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <path id="Simple Chat Server.classpath">
         <pathelement location="bin"/>
+        <pathelement location="../../../Downloads/hamcrest-core-1.3.jar"/>
+        <pathelement location="../../../Downloads/junit-4.12.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -46,5 +51,31 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="Runner">
+        <java classname="g54ubi.chat.server.Runner" failonerror="true" fork="yes">
+            <classpath refid="Simple Chat Server.classpath"/>
+        </java>
+    </target>
+    <target name="tests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="g54ubi.chat.server.tests" todir="${junit.output.dir}"/>
+            <classpath refid="Simple Chat Server.classpath"/>
+        </junit>
+    </target>
+    <target name="ChatClient">
+        <java classname="chatClient.ChatClient" failonerror="true" fork="yes">
+            <classpath refid="Simple Chat Server.classpath"/>
+        </java>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>

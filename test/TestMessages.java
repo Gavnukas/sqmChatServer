@@ -28,7 +28,7 @@ public class TestMessages {
 		ChatClient newChat = new ChatClient();
 		newChat.faggot("IDEN me");
 		//System.out.println(newClass.server.doesUserExist("faggot"));
-		assertEquals("LIST faggot, me, ", newChat.faggot("LIST"));
+		assertEquals("ok faggot, me, ", newChat.faggot("LIST"));
 		
 	}
 	@Test
